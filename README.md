@@ -52,6 +52,8 @@ The file is composed of the following data blocks:
 + A series of _rows_ * _columns_ double precision numbers of data values, in row-major order (all time values for a given wavelength first)
 + A single string containing the metadata, eg. "Solvent: H20\r\nDate: 1/9/2016\r\n"
 
+## Issues
 
+The metadata string is discarded during conversion. Since the metadata appended to the CSV files can cause issues with other software (reading in Matlab for example), this is currently considered a feature. ;)
 
 
