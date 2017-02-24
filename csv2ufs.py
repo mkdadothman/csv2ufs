@@ -51,14 +51,14 @@ if __name__ == '__main__':
             axis2_label = b'Time'
             axis2_units = b'ps'
             axis2_data = csvreader.__next__()
-            axis2_data = axis2_data[1:-1]
+            axis2_data = axis2_data[1:]
             
             data_label = b'DA'
             data_matrix = []
             try:
                 for row in csvreader:
                     axis1_data.append(row[0])
-                    data_matrix.append(row[1:-1])
+                    data_matrix.append(row[1:])
             except ValueError:
                 # TODO, could read metadata block here...
                 pass
