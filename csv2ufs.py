@@ -31,13 +31,21 @@ def writeDouble(ufsfile, value):
 def writeDoubles(ufsfile, values):
     ufsfile.write(struct.pack('>{}d'.format(len(values)), *values))
 
-
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print('Please specify file(s) on the command line!')
-        exit(1)
-    
-    for filename in sys.argv[1:]:
+    # Show file open dialog if no input files specified on command line
+    if len(sys.argv) > 1:
+        filenames = sys.argv[1:]
+    else:
+        from tkinter import Tk, filedialog
+        tk_root = Tk()
+        tk_root.withdraw()
+        filenames = list(filedialog.askopenfilenames(parent=None, title='Select csv input files...'))
+        tk_root.destroy()
+        if len(filenames) < 1:
+            print('No input files selected. Exiting.')
+            exit(1)
+
+    for filename in filenames:
         with open(filename, 'r', newline='') as csvfile:
             print('Reading CSV data from {}.csv'.format(filename))
             csvreader = csv.reader(csvfile, quoting=csv.QUOTE_NONNUMERIC)

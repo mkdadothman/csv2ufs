@@ -59,11 +59,20 @@ def readDoubles(filedata, cursor, count):
     return (list(numbers), cursor)
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print('Please specify a file on the command line!')
-        exit(1)
+    # Show file open dialog if no input files specified on command line
+    if len(sys.argv) > 1:
+        filenames = sys.argv[1:]
+    else:
+        from tkinter import Tk, filedialog
+        tk_root = Tk()
+        tk_root.withdraw()
+        filenames = list(filedialog.askopenfilenames(parent=None, title='Select ufs input files...'))
+        tk_root.destroy()
+        if len(filenames) < 1:
+            print('No input files selected. Exiting.')
+            exit(1)
     
-    for filename in sys.argv[1:]:
+    for filename in filenames:
         f = open(filename, 'rb')
         filedata = f.read()
 
