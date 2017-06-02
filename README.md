@@ -13,7 +13,7 @@ Has been tested on Python 3.4 on Windows XP and Python 3.5.2 on Arch Linux.
 
 ## Usage
 
-Running either `csv2usf.py` or `ufs2csv.py` without specifying input files on the command line will open a graphical file selection dialog.
+Running either `csv2ufs.py` or `ufs2csv.py` without specifying input files on the command line will open a graphical file selection dialog.
 Multiple files may be selected (using Shift-click, Ctrl-click and similar).
 
 Output filenames will the same as the input filenames, with `.ufs` or `.csv` appended as appropriate, for example `infile1.ufs.csv`. 
